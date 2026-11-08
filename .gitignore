@@ -1,0 +1,17 @@
+# 上游克隆仓库（11 个仓库约 480M，各有独立 .git，不属于本项目）
+upstream/
+
+# 可重新下载的发布包
+*.zip
+
+# macOS 噪声
+.DS_Store
+
+# 旧 ESP 快照（2026-11-03，已过时且含 SMBIOS 身份信息，不进公开仓库）
+backup-20261103-005958/
+
+# root 属主的蓝牙 kext 备份（已被 lbs253/ 取代，且本用户读不了）
+backup-20261106-kexts/
+
+# 全量 ioreg 转储含系统序列号（公开仓库排除；DSDT 源文件保留）
+tools/dsdt-20261108/acpi-ioreg.xml

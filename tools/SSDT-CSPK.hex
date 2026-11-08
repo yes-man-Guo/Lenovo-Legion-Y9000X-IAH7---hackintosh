@@ -1,0 +1,31 @@
+; 
+; Intel ACPI Component Architecture
+; ASL+ Optimizing Compiler/Disassembler version 20210331 (64-bit version)
+; Copyright (c) 2000 - 2021 Intel Corporation
+; 
+; Compilation of "SSDT-CSPK.dsl" - Sun Nov  8 13:43:43 2026
+; 
+; Assembly code source output
+; AML code block contains 0x9F bytes
+;
+  db  053h,053h,044h,054h,09Fh,000h,000h,000h   ; 00000000    "SSDT...."
+  db  002h,02Ah,04Ch,045h,04Eh,04Fh,056h,04Fh   ; 00000008    ".*LENOVO"
+  db  043h,053h,050h,04Bh,000h,000h,000h,000h   ; 00000010    "CSPK...."
+  db  001h,010h,000h,000h,049h,04Eh,054h,04Ch   ; 00000018    "....INTL"
+  db  031h,003h,021h,020h,05Bh,082h,049h,007h   ; 00000020    "1.! [.I."
+  db  05Ch,02Eh,05Fh,053h,042h,05Fh,043h,053h   ; 00000028    "\._SB_CS"
+  db  050h,04Bh,008h,05Fh,048h,049h,044h,00Dh   ; 00000030    "PK._HID."
+  db  043h,053h,050h,04Bh,030h,030h,030h,030h   ; 00000038    "CSPK0000"
+  db  000h,008h,05Fh,053h,054h,041h,00Ah,00Fh   ; 00000040    ".._STA.."
+  db  05Bh,080h,043h,053h,057h,030h,000h,00Ch   ; 00000048    "[.CSW0.."
+  db  000h,007h,06Dh,0FDh,00Ah,004h,05Bh,081h   ; 00000050    "..m...[."
+  db  00Bh,043h,053h,057h,030h,000h,043h,044h   ; 00000058    ".CSW0.CD"
+  db  057h,030h,020h,014h,010h,05Fh,049h,04Eh   ; 00000060    "W0 .._IN"
+  db  049h,000h,070h,00Ch,001h,002h,000h,084h   ; 00000068    "I.p....."
+  db  043h,044h,057h,030h,014h,01Eh,052h,050h   ; 00000070    "CDW0..RP"
+  db  053h,054h,000h,070h,00Ch,000h,002h,000h   ; 00000078    "ST.p...."
+  db  084h,043h,044h,057h,030h,05Bh,022h,00Ah   ; 00000080    ".CDW0["."
+  db  00Ah,070h,00Ch,001h,002h,000h,084h,043h   ; 00000088    ".p.....C"
+  db  044h,057h,030h,014h,00Bh,047h,050h,044h   ; 00000090    "DW0..GPD"
+  db  057h,000h,0A4h,043h,044h,057h,030h        ; 00000098    "W..CDW0"
+
