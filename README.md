@@ -15,8 +15,8 @@ Lenovo Legion Y9000X 2022 的 OpenCore 黑苹果工程与排查记录。
 | Wi-Fi | ✅ | itlwm + HeliPort |
 | 蓝牙 | ✅ | AX211 (8087:0033, BlazarU) 需要 IntelBluetoothFirmware v2.5.3 的 ibt-0093-0041 固件 |
 | 触摸板 | ✅ | VoodooI2C fork（ADL-P personality + TransfeToAddress 补丁） |
-| 内建麦克风 | ❌ | 阵列接 PCH DMIC (Intel SST/SOF)，AppleHDA 无此驱动，**macOS 硬件级无解**；用 3.5mm 耳麦 / USB 麦替代 |
-| 电池修正 | ✅ | SSDT-BAT0（EC 原始容量字段错误，mAh 换算 + critical 位清洗） |
+| 内建麦克风 | ❌ | 阵列接 PCH DMIC (Intel SST/SOF)，AppleHDA 无此驱动，**macOS 硬件级无解**（Ubuntu 实测：DMIC 录到声、codec 路径 -85dB 纯静音，双系统互证结案）；用 3.5mm 耳麦 / USB 麦替代 |
+| 电池修正 | ✅ | SSDT-BAT0 v3.1：EC 容量换算 + critical 位清洗 + **序列号覆盖**（powerd 按序列号持久化 "Check Battery" 判决，换序列号强制重评估 → 状态转"正常"） |
 
 ## 目录说明
 
