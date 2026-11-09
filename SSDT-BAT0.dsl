@@ -36,6 +36,13 @@ DefinitionBlock ("", "SSDT", 2, "HACK", "BAT0FIX", 0x00001000)
             /* [5] DesignVoltage = 15520 mV (original left 0xFFFFFFFF) */
             Local0 [0x05] = 0x3CA0
 
+            /* [17] Serial Number override (v3.1): powerd persists its
+             * "Check Battery" health verdict KEYED BY BATTERY SERIAL.
+             * The old verdict was written in the broken-EC era and is
+             * restored on every boot ("Detected previous service").
+             * A fresh serial forces a clean re-evaluation. */
+            Local0 [0x11] = "HACKBAT00000001"
+
             /* [3] FCC = original * 3558/15520, cap at 6377 (99%) */
             Local1 = DerefOf (Local0 [0x03])
             Local2 = (Local1 * 0x0DE6)
