@@ -38,6 +38,9 @@
 #ifndef NV2080_CTRL_CMD_PERF_SET_POWERSTATE
 #define NV2080_CTRL_CMD_PERF_SET_POWERSTATE 0x2080205bU
 #endif
+#ifndef NV2080_CTRL_CMD_PERF_GET_POWERSTATE
+#define NV2080_CTRL_CMD_PERF_GET_POWERSTATE 0x2080205aU
+#endif
 
 enum { SEL_ESC = 1, SEL_BINDFD = 3 };
 
@@ -142,6 +145,29 @@ int main(int argc, char **argv)
     NV2080_CTRL_PERF_GET_CURRENT_PSTATE_PARAMS cp = {0};
     st = rm_ctrl(&rm, rm.hSubdev, NV2080_CTRL_CMD_PERF_GET_CURRENT_PSTATE, &cp, sizeof cp);
     if (st == NV_OK) printf("current pstate: P%u (0x%02x)\n", cp.currPstate, cp.currPstate);
+
+    // Idempotency check: on driver 2.8.x even a redundant SET (same value)
+    // raises a power-source change event and disturbs the display pipeline
+    // (window flicker/tearing). The LaunchAgent re-runs every 3 minutes, so
+    // only a real loss of the override (sleep/wake, plug event, reboot)
+    // may fall through to the SET below.
+    NV2080_CTRL_PERF_GET_POWERSTATE_PARAMS gp = {0};
+    NvU32 gst = rm_ctrl(&rm, rm.hSubdev, NV2080_CTRL_CMD_PERF_GET_POWERSTATE, &gp, sizeof gp);
+    if (gst == NV_OK) {
+        NvU32 cur = gp.powerStateInfo.powerState;
+        int isBattery = cur == NV2080_CTRL_PERF_POWER_SOURCE_BATTERY ? 1 : 0;
+        printf("current power source: %s\n", isBattery ? "battery" : "ac");
+        if (isBattery == (wantBattery ? 1 : 0)) {
+            printf("already %s, skip SET\n", wantBattery ? "battery" : "ac");
+            rm_free(&rm, rm.hSubdev);
+            rm_free(&rm, rm.hDevice);
+            rm_free(&rm, rm.hClient);
+            IOServiceClose(rm.ctl.conn);
+            if (rm.ctl.fd >= 0) close(rm.ctl.fd);
+            return 0;
+        }
+    }
+    // GET unsupported/failed -> fall through and SET as before.
 
     // The actual switch.
     NV2080_CTRL_PERF_SET_POWERSTATE_PARAMS sp; memset(&sp, 0, sizeof sp);
