@@ -6,11 +6,11 @@ Lenovo Legion Y9000X 2022 的 OpenCore 黑苹果工程与排查记录。
 - **系统**：macOS 15.8 Sequoia，OpenCore（AAPL debug 版）
 - **图形**：NullMoth/NVRM 社区驱动（NVRM/NVAccel/NVRMAGDC/NVRMFB）直驱内屏，H.264/HEVC 硬编硬解全通
 
-## 当前状态（2026-11-08）
+## 当前状态（2026-11-11）
 
 | 部件 | 状态 | 方案 |
 |---|---|---|
-| GPU 加速 | ✅ | NVRM 2.7.2 社区驱动（`/Library/Extensions`）+ AMFIPass |
+| GPU 加速 | ✅ | NVRM 2.9 社区驱动（`/Library/Extensions`）+ AMFIPass |
 | 扬声器 | ✅ | ALC287 (alcid=13) + CS35L41 I2C 功放，SSDT-CSPK `RPST` AML 复位脉冲 + CirrusAudioFixup + VoodooGPIO |
 | Wi-Fi | ✅ | itlwm + HeliPort |
 | 蓝牙 | ✅ | AX211 (8087:0033, BlazarU) 需要 IntelBluetoothFirmware v2.5.3 的 ibt-0093-0041 固件 |
