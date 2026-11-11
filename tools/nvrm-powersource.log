@@ -2329,3 +2329,24 @@ gpu_id 0x100
 current pstate: P8 (0x08)
 current power source: battery
 already battery, skip SET
+gpu_id 0x100
+current pstate: P256 (0x100)
+current power source: battery
+already battery, skip SET
+gpu_id 0x100
+current pstate: P1 (0x01)
+current power source: ac
+PERF_SET_POWERSTATE BATTERY -> RM 0x00000000 (accepted)
+pstate after switch: P8 (0x08)
+gpu_id 0x100
+current pstate: P8 (0x08)
+current power source: battery
+already battery, skip SET
+gpu_id 0x100
+current pstate: P8 (0x08)
+current power source: battery
+already battery, skip SET
+gpu_id 0x100
+current pstate: P8 (0x08)
+current power source: battery
+already battery, skip SET
