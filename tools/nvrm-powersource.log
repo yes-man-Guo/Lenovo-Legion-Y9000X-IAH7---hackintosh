@@ -2350,3 +2350,7 @@ gpu_id 0x100
 current pstate: P8 (0x08)
 current power source: battery
 already battery, skip SET
+gpu_id 0x100
+current pstate: P8 (0x08)
+current power source: battery
+already battery, skip SET
